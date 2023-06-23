@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 5
-  cardPrefab: {fileID: 6013690291561911545}
   cardDescription: Reefer
   count: 12
 --- !u!61 &6343397608044743356

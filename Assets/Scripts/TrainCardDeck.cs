@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
+using UnityEngine.EventSystems;
 
 public class TrainCardDeck : MonoBehaviour
 {
@@ -15,8 +15,10 @@ public class TrainCardDeck : MonoBehaviour
     public GameObject rainbowTrainCardPrefab;
 
     public List<Transform> cardPositions;
+    public List<Transform> trainCardHandPositions;
 
     private List<GameObject> deck;
+    private List<GameObject> trainCardHand;
     private int currentCardIndex;
 
     private void Start()
@@ -24,6 +26,7 @@ public class TrainCardDeck : MonoBehaviour
         InitializeDeck();
         ShuffleDeck();
         MoveCardsToPositions();
+        trainCardHand = new List<GameObject>();
     }
 
     private void InitializeDeck()
@@ -75,5 +78,31 @@ public class TrainCardDeck : MonoBehaviour
             card.transform.position = cardPositions[i].position;
             currentCardIndex++;
         }
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            if (hit.collider != null && deck.Contains(hit.collider.gameObject))
+            {
+                GameObject clickedCard = hit.collider.gameObject;
+                MoveCardToHandPosition(clickedCard);
+            }
+        }
+    }
+
+    public void MoveCardToHandPosition(GameObject card)
+    {
+        if (currentCardIndex >= deck.Count)
+            return;
+
+        if (trainCardHand.Count >= trainCardHandPositions.Count)
+            return;
+
+        trainCardHand.Add(card);
+        card.transform.position = trainCardHandPositions[trainCardHand.Count - 1].position;
+        currentCardIndex++;
     }
 }

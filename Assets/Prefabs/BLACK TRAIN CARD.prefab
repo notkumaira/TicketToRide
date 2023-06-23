@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 1
-  cardPrefab: {fileID: 5592907252675907596}
   cardDescription: Hopper
   count: 12
 --- !u!61 &8332439753051602238

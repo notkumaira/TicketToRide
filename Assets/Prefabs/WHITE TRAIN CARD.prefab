@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 4
-  cardPrefab: {fileID: 2043574094882305253}
   cardDescription: Passenger
   count: 12
 --- !u!61 &8559115766082205999

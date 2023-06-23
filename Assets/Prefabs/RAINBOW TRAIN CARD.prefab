@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 9
-  cardPrefab: {fileID: 7837358914887707304}
   cardDescription: Locomotive
   count: 14
 --- !u!61 &3010002494851747253

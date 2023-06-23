@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 2
-  cardPrefab: {fileID: 1403920160686644441}
   cardDescription: Tanker
   count: 12
 --- !u!61 &8736659711825510969

@@ -1,10 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-public class TrainCard : MonoBehaviour
+using UnityEngine.EventSystems;
+
+public class TrainCard : MonoBehaviour, IPointerDownHandler
 {
+    private TrainCardDeck trainCardDeck;
+
     public int id;
-    public GameObject cardPrefab;
     public string cardDescription;
     public int count;
 
@@ -13,11 +14,25 @@ public class TrainCard : MonoBehaviour
 
     }
 
-    public TrainCard(int Id, GameObject CardPrefab, string CardDescription, int Count)
+    public TrainCard(int Id, string CardDescription, int Count)
     {
         id = Id;
-        cardPrefab = CardPrefab;
         cardDescription = CardDescription;
         count = Count;
+    }
+
+    private void Start()
+    {
+        // Find the TrainCardDeck script in the scene
+        trainCardDeck = FindObjectOfType<TrainCardDeck>();
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        // Call the MoveCardToHandPosition method in the TrainCardDeck script
+        if (trainCardDeck != null)
+        {
+            trainCardDeck.MoveCardToHandPosition(gameObject);
+        }
     }
 }
